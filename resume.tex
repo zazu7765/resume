@@ -1,0 +1,54 @@
+%! TEX root = resume.tex
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{titling}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\titleformat{\section}{\huge\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\bfseries\Large}{}{0em}{}[]
+\titleformat{\subsubsection}[runin]{\bfseries}{}{0em}{}
+\author{Daniel Ibanescu}
+\hypersetup{ % Hyperlink layout setup
+    colorlinks=true,
+    linkcolor=purple,
+    urlcolor=purple,
+    pdfpagemode=FullScreen,
+}
+\renewcommand{\maketitle}{
+              \begin{center}
+                  {\huge\bfseries\theauthor} \\ % Renders your name
+                  daniel\_ibanescu@hotmail.com | % Email
+                  \href{https://github.com/zazu7765}{Github} % Github URL
+                  | \href{https://linkedin.com/in/ibada}{LinkedIn} % Linkedin URL
+              \end{center}
+              \vspace{-2.5em} % Add some whitespace
+          }
+\date{April 2023}
+\geometry{ % Page layout setup
+         letterpaper,
+         left=.5in,
+         top=.5in,
+         bottom=.5in,
+         right=.5in
+    }
+\begin{document}
+\maketitle
+\section{Education}
+\textbf{Relevant Coursework:} Computer Science I, Computer Science II, Ethics
+\section{Experience}
+\subsection{Metropolitan Aerospace and Combustion Hub}
+\textbf{September 2022 - Present}
+\textit{Transfer \& Control - Software Lead}
+\subsection{Robotics For All}
+\textbf{January 2020 - September 2022}
+\textit{Software Development Team Member}
+\section{Skills}
+\subsection{Technical Skills}
+C++, JavaScript/TypeScript, Python
+\subsection{Tools}
+AWS
+\LaTeX
+\subsection{Soft Skills}
+\end{document}
