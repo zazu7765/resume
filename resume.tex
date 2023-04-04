@@ -6,16 +6,34 @@
 \usepackage{titling}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{ifthen}
+\usepackage[parfill]{parskip}
+% page layout packages
+% optional serif font family rebind
+% \renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty} % remove page numbers
+% geometry layout setup
+\geometry{ 
+         letterpaper,
+         left=.5in,
+         top=.5in,
+         bottom=.5in,
+         right=.5in
+    }
+% Hyperlink layout setup
+\hypersetup{ 
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=black,
+    pdfpagemode=FullScreen,
+}
+% title formatting
 \titleformat{\section}{\huge\bfseries}{}{0em}{}[\titlerule]
 \titleformat{\subsection}{\bfseries\Large}{}{0em}{}[]
 \titleformat{\subsubsection}[runin]{\bfseries}{}{0em}{}
+% title section parameters
 \author{Daniel Ibanescu}
-\hypersetup{ % Hyperlink layout setup
-    colorlinks=true,
-    linkcolor=purple,
-    urlcolor=purple,
-    pdfpagemode=FullScreen,
-}
+\date{April 2023}
 \renewcommand{\maketitle}{
               \begin{center}
                   {\huge\bfseries\theauthor} \\ % Renders your name
@@ -23,32 +41,80 @@
                   \href{https://github.com/zazu7765}{Github} % Github URL
                   | \href{https://linkedin.com/in/ibada}{LinkedIn} % Linkedin URL
               \end{center}
-              \vspace{-2.5em} % Add some whitespace
+              \vspace{-1.5em} % Add some whitespace
           }
-\date{April 2023}
-\geometry{ % Page layout setup
-         letterpaper,
-         left=.5in,
-         top=.5in,
-         bottom=.5in,
-         right=.5in
-    }
+% 4 args - company, year(s), title (optional) and location 
+\newenvironment{customS}[4]{ 
+% Bold company name and date on the right
+ {\bf #1} \hfill {#2} 
+% If the third argument is not specified, don't print the job title and location line
+ \ifthenelse{\equal{#3}{}}{}{ 
+  \\
+% Italic styling on job title and location
+  {\em #3} \hfill {\em #4} 
+  }
+% \cdot used for bullets, no indentation
+  \begin{list}{$\cdot$}{\leftmargin=0em} 
+% Compress items in list together 
+   \itemsep -0.5em \vspace{-0.5em} 
+  }{
+  \end{list}
+  \vspace{0.5em} % Some space after the list of bullet points
+}
 \begin{document}
 \maketitle
 \section{Education}
-\textbf{Relevant Coursework:} Computer Science I, Computer Science II, Ethics
+\begin{customS}
+    {Toronto Metropolitan University}
+    {September 2022 - June 2026}
+    {BSc Honours, Computer Science}
+    {Toronto, Canada}
+\textbf{Relevant Coursework:} Computer Science I, Computer Science II, Ethics \\
+\textbf{Awards:} Entrance Scholarship 
+\end{customS}
+\vspace{-1.5em}
 \section{Experience}
-\subsection{Metropolitan Aerospace and Combustion Hub}
-\textbf{September 2022 - Present}
-\textit{Transfer \& Control - Software Lead}
-\subsection{Robotics For All}
-\textbf{January 2020 - September 2022}
-\textit{Software Development Team Member}
+\begin{customS}
+    {Metropolitan Aerospace and Combustion Hub (MACH)}
+    {September 2022 - Present}
+    {Transfer \& Control Software Lead}
+    {Toronto, Canada}
+\item Responsible for everything lol
+\end{customS}
+\begin{customS}
+    {Robotics For All}
+    {January 2020 - September 2022}
+    {Software Development Team Member}
+    {Remote}
+\item testing testing 123
+\end{customS}
+\vspace{-1.5em}
+\section{Projects}
+\begin{customS}
+    {Substitute Teacher Contactor}
+    {TypeScript, Node, Docker, Slack Bolt}
+    {Robotics For All}
+    {}
+\item Developed a Slack application/integration to simplify the substitution process for teachers
+\item Utilized a Google Sheet and Cloud API to retrieve available volunteer teachers and coordinators
+\item Coordinators can make class requests in a Slack dashboard with specific details, which are stored in a PostgreSQL database for further data analysis.
+\item Teachers can use the Slack dashboard to accept requests and contact coordinators for more information
+\item All management can be done within Slack, without the need for further configuration
+\item Deployed using AWS ECR/ECS on an EC2 instance connected to an RDS database.
+\end{customS}
+\begin{customS}
+    {Simple Notes}
+    {Go, Postgres, Docker}
+    {Collaborative Personal Project}
+    {}
+\item Designed and developed a simple notes application backend with a full CRUD API using GoFiber and PostgreSQL.
+\item Utilized an ORM for general queries and raw SQL for custom and complex queries, ensuring efficient database operations.
+\item Deployed the application on Heroku to enable access to users from anywhere, at any time.
+\end{customS}
+\vspace{-1.5em}
 \section{Skills}
-\subsection{Technical Skills}
-C++, JavaScript/TypeScript, Python
-\subsection{Tools}
-AWS
-\LaTeX
-\subsection{Soft Skills}
+\textbf{Technical Skills:}
+C/C++, JavaScript/TypeScript, Python, HTML/CSS \\
+\textbf{Tools:}
+ AWS, Docker/Compose, Git/Github, \LaTeX, PostgreSQL, Linux
 \end{document}
